@@ -1,9 +1,9 @@
 import React from "react";
-import Authenticated from "./Authenticated";
-// import Basic from "./Basic";
+// import Authenticated from "./Authenticated";
+import Basic from "./Basic";
 
 const Routes = () => {
-  return <Authenticated />;
+  return <Basic />;
 };
 
 export default Routes;
