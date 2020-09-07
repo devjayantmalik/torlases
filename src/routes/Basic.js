@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import ResetPassword from "../pages/ResetPassword";
+import ErrorPage from "../pages/Error";
 
 const Basic = () => {
   return (
@@ -13,6 +14,8 @@ const Basic = () => {
         <Route path="/login" exact component={Login} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/reset" exact component={ResetPassword} />
+        <Route path="/error" exact component={ErrorPage} />
+        <Redirect from="*" to="/error" />
       </Switch>
     </BrowserRouter>
   );
