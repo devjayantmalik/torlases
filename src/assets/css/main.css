@@ -18,6 +18,9 @@
 
   /* Related to file or folder item */
   --file-item-background: #fff;
+
+  /* Device sizes */
+  --tablet-width: 800px;
 }
 
 * {
@@ -48,174 +51,13 @@ a {
 }
 
 /* Styles related to dashboard */
-.dashboard {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: calc(100vh - var(--navbar-height));
-  overflow: auto;
-}
-
-.dashboard .left-sidebar,
-.dashboard .content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: calc();
-  overflow: auto;
-}
-
-.dashboard .left-sidebar {
-  flex: 0.4;
-  max-width: 320px;
-  padding: 10px;
-  background-color: var(--dashboard-left-sidebar-background);
-}
-
-.dashboard .content {
-  flex: 1;
-  background-color: var(--dashboard-content-background);
-}
-
-@media screen and (max-width: 800px) {
-  .dashboard .left-sidebar,
-  .dashboard .content {
-    flex: 1;
-  }
-}
-
-/* Styles realted to navbar */
-.auth-navbar {
-  display: flex;
-  flex-direction: row;
-  height: var(--navbar-height);
-  margin: 0;
-  padding: 10px;
-  background-color: var(--auth-navbar-background);
-  align-items: center;
-}
-
-.navbar-brand {
-  display: block;
-}
-
-.navbar-menu {
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  margin-left: auto;
-  text-align: center;
-  align-self: flex-end;
-}
-
-.navbar-menu li {
-  display: block;
-  margin: 0px 10px;
-}
-
-.navbar-menu a {
-  text-decoration: none;
-}
-
-.icon {
-  font-size: 24px;
-}
-
-/* Related to dashboard sidebar */
-
-.dashboard .sidebar-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.dashboard .title {
-  font-size: var(--title-font-size);
-}
-
-/* sidebar torrent items */
-
-.torrent-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 10px 0;
-}
-
-.torrent-item .avatar {
-  display: block;
-  width: 26px;
-  margin: 0 10px;
-}
-
-.torrent-item .info {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  overflow: hidden;
-  word-wrap: break-word;
-}
-
-.torrent-item .torrent-name {
-  display: block;
-  font-size: var(--base-font-size);
-}
-
-.torrent-item .speed {
-  display: block;
-  width: 50px;
-  padding-top: 2px;
-}
-
-/* torrent selected file header styles */
-.torrent-header {
-  background-color: #d0fbe9;
-}
-
-/* Related to torrent details area */
-.torrent-details {
-  padding: 30px;
-}
-
-.torrent-details .filename {
-  text-align: center;
-  font-weight: bold;
-}
+@import "./dashboard.css";
 
 /* Import utilities such as: margin, padding etc. */
 @import "./utils.css";
 
-/* styles related to file or folder item */
-.file-item,
-.folder-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: var(--file-item-background);
-  padding: 2px 5px;
-  max-height: 37px;
-  width: 80%;
-  margin: 10px 0;
-}
+/* import components */
+@import "./components.css";
 
-.file-item .checkbox {
-  display: block;
-  margin-right: 10px;
-}
-
-.file-item .checkbox input {
-  display: block;
-  outline: 1px solid black;
-  margin: 0 5px;
-}
-
-.file-item .icon {
-  display: block;
-  margin-right: 10px;
-}
-
-.file-item .filename {
-  display: block;
-}
+/* Import login styles */
+@import "./login.css";

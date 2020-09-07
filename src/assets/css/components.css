@@ -1,0 +1,20 @@
+:root {
+    --card-background-color: #fff;
+}
+
+.card {
+    width: 80%;
+    padding: 10px;
+    background-color: var(--card-background-color);
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px #00000025;
+}
+
+.card-links {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+    margin: 0 10px;
+    font-size: var(--base-font-size);
+}

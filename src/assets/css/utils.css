@@ -22,3 +22,25 @@
   flex-direction: column;
   flex-grow: 1;
 }
+
+@media screen and (max-width: 800px) {
+  .is-hidden-mobile {
+    display: none;
+  }
+  .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .login .columns {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+  .login .card {
+    width: 100%;
+    margin: 0;
+  }
+}

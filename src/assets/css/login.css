@@ -1,0 +1,75 @@
+:root {
+    --login-background-color: #fff;
+    --input-background-color: #eee;
+    --input-focus-color: peru;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--login-background-color);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.login-container {
+    width: 80%;
+    margin: auto;
+}
+
+.login .title,
+.signup .title {
+    margin-left: 20px;
+}
+
+.login-form {
+    display: block;
+}
+
+.login-form div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.login-form label,
+input {
+    display: block;
+    width: 100%;
+}
+
+.login-form label {
+    font-size: var(--base-font-size);
+    padding: 5px 0;
+}
+
+.login-form input {
+    font-family: monospace;
+    border-radius: 5px;
+    padding: 5px;
+    border: 0;
+    background-color: var(--input-background-color);
+    border: 2px solid black;
+}
+
+.login-form input:focus,
+input:active {
+    border: 2px solid var(--input-focus-color);
+}
+
+.button {
+    background-color: navy;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+    .login .title,
+    .signup .title {
+        margin: 0px;
+    }
+}
