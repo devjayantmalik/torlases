@@ -1,7 +1,7 @@
 import React from "react";
 
 const Image = (props) => {
-  return <img {...props} src={props.src} />;
+  return <img alt="" loading="lazy" {...props} src={props.src} />;
 };
 
 export default Image;
