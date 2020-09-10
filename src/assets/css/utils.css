@@ -44,3 +44,16 @@
     margin: 0;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: wrap;
+  }
+  .column {
+    width: 100%;
+    flex: 1;
+    margin: 10px 0;
+  }
+}

@@ -7,7 +7,7 @@ const TorrentHeader = () => {
       <div className="navbar-brand">
         <Link to="/">
           <span className="icon mdi mdi-arrow-left mr-10"></span>
-          <span className="title">Torrents Stats</span>
+          <span className="header-title">Torrents Stats</span>
         </Link>
       </div>
       <ul className="navbar-menu">

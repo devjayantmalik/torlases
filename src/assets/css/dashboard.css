@@ -28,10 +28,11 @@
     background-color: var(--dashboard-content-background);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
     .dashboard .left-sidebar,
     .dashboard .content {
         flex: 1;
+        max-width: 100%;
     }
 }
 
@@ -155,7 +156,6 @@
 
 .file-item .checkbox input {
     display: block;
-    outline: 1px solid black;
     margin: 0 5px;
 }
 
@@ -166,4 +166,10 @@
 
 .file-item .filename {
     display: block;
+}
+
+@media screen and (max-width: 800px) {
+    .dashboard .header-title {
+        display: none;
+    }
 }
