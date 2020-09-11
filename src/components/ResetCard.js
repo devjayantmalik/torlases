@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const ResetCard = () => {
+  const [email, setEmail] = useState("");
   return (
     <div className="card">
       <form className="login-form">
         <div>
           <label>Your Email Address</label>
-          <input type="email" />
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value.toLowerCase())}
+            type="email"
+          />
         </div>
 
         <div>
