@@ -1,4 +1,4 @@
-import { SIGN_IN, SIGN_UP, VALIDATE_LOGIN } from "./types";
+import { SIGN_IN, SIGN_UP } from "./types";
 
 const INITIAL_STATE = {
   user: {
@@ -9,21 +9,26 @@ const INITIAL_STATE = {
   isLoggedIn: false,
   lastLogin: null,
   token: null,
-  error: {
-    name: "",
-    message: "",
-    status: "",
-  },
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SIGN_IN:
-      return;
+      return {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+        isLoggedIn: true,
+        lastLogin: new Date(),
+      };
     case SIGN_UP:
-      return;
-    case VALIDATE_LOGIN:
-      return;
+      return {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+        isLoggedIn: true,
+        lastLogin: new Date(),
+      };
     default:
       return state;
   }

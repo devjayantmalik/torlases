@@ -1,13 +1,33 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { signIn } from "../store/auth/action";
+import ErrorCard from "./ErrorCard";
 
-const LoginCard = () => {
+const LoginCard = ({ signIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    // Clear the previous errors
+    setError("");
+
+    if (!email) return setError("Email is Required.");
+    if (!password) return setError("Password is Required.");
+
+    signIn(email, password, (err) => {
+      return setError(err.message);
+    });
+    return false;
+  };
 
   return (
     <div className="card">
-      <form className="login-form">
+      <ErrorCard error={error} />
+      <form className="login-form" onSubmit={handleFormSubmit}>
         <div>
           <label>Your Email Address</label>
           <input
@@ -42,4 +62,4 @@ const LoginCard = () => {
   );
 };
 
-export default LoginCard;
+export default connect(null, { signIn })(LoginCard);

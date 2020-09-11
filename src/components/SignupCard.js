@@ -1,15 +1,46 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { signUp } from "../store/auth/action";
+import ErrorCard from "./ErrorCard";
 
-const SignupCard = () => {
+const SignupCard = ({ signUp }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    // Always reset the error
+    setError("");
+
+    /**
+     * Basic Form Validation
+     */
+    if (!name) return setError("Name is required");
+    if (!email) return setError("Email is required");
+    if (!password) return setError("Password is required");
+    if (!confirmPassword) return setError("Confirm Password is required.");
+    if (password !== confirmPassword)
+      return setError("Password does not match");
+
+    /**
+     * Register the user
+     */
+    signUp({ name, email, password }, (err) => {
+      return setError(err.message);
+    });
+
+    return false;
+  };
 
   return (
     <div className="card">
-      <form className="login-form">
+      <ErrorCard error={error} />
+      <form className="login-form" onSubmit={handleFormSubmit}>
         <div>
           <label>Your Full name</label>
           <input
@@ -60,4 +91,4 @@ const SignupCard = () => {
   );
 };
 
-export default SignupCard;
+export default connect(null, { signUp })(SignupCard);

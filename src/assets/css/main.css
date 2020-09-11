@@ -38,6 +38,14 @@ body {
   width: 100%;
 }
 
+/* Change styles for mobile browsers */
+@media screen and (max-width: 850px) {
+  :root {
+    --base-font-size: 12px;
+    --title-font-size: 20px;
+  }
+}
+
 /* Reset for old browsers */
 section,
 article,
