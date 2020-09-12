@@ -1,4 +1,4 @@
-import { SIGN_IN, SIGN_UP } from "./types";
+import { SIGN_IN, SIGN_UP, VALIDATE_LOGIN } from "./types";
 
 const INITIAL_STATE = {
   user: {
@@ -6,7 +6,7 @@ const INITIAL_STATE = {
     name: "",
     email: "",
   },
-  isLoggedIn: false,
+  isLoggedIn: null,
   lastLogin: null,
   token: null,
 };
@@ -29,6 +29,17 @@ export default (state = INITIAL_STATE, action) => {
         isLoggedIn: true,
         lastLogin: new Date(),
       };
+    case VALIDATE_LOGIN:
+      return !action.payload.user
+        ? { ...state, ...INITIAL_STATE, isLoggedIn: false }
+        : {
+            ...state,
+            user: action.payload.user,
+            token: action.payload.token,
+            isLoggedIn: true,
+            lastLogin: new Date(),
+          };
+
     default:
       return state;
   }

@@ -5,16 +5,12 @@ import TorrentDetails from "../components/TorrentDetail";
 
 const Dashboard = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [torrentSelected, setTorrentSelected] = useState(false);
+  const [torrentSelected] = useState(false);
 
   useEffect(() => {
     window.onresize = (e) => {
-      if (window.innerWidth < 850) {
-        setIsMobile(true);
-        setTorrentSelected(true);
-      } else {
-        setIsMobile(false);
-      }
+      const mobile = window.innerWidth < 800 ? true : false;
+      setIsMobile(mobile);
     };
   }, []);
 

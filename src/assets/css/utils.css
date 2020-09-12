@@ -38,6 +38,7 @@
   .is-hidden-mobile {
     display: none;
   }
+
   .login {
     display: flex;
     justify-content: center;
