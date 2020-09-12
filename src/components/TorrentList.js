@@ -1,19 +1,14 @@
 import React from "react";
 import TorrentItem from "./TorrentItem";
-import { Link } from "react-router-dom";
 
-const TorrentList = () => {
+const TorrentList = ({ items, title }) => {
   return (
     <div>
-      <div className="sidebar-header">
-        <h1 className="title">Torrents</h1>
+      <h2 className="title">{title}</h2>
 
-        <Link to="/">
-          <span className="icon mdi mdi-dots-vertical"></span>
-        </Link>
-      </div>
-      <TorrentItem />
-      <TorrentItem />
+      {items.map((item, index) => (
+        <TorrentItem item={item} key={index} />
+      ))}
     </div>
   );
 };

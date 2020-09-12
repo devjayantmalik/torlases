@@ -1,51 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import TorrentList from "../components/TorrentList";
-import TorrentHeader from "../components/TorrentHeader";
-import TorrentDetails from "../components/TorrentDetail";
+import AddTorrent from "../components/AddTorrent";
+import { getTorrents } from "../store/torrents/actions";
+import { connect } from "react-redux";
 
-const Dashboard = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [torrentSelected] = useState(false);
+class Dashboard extends React.Component {
+  componentDidMount() {
+    this.props.getTorrents();
+  }
 
-  useEffect(() => {
-    window.onresize = (e) => {
-      const mobile = window.innerWidth < 800 ? true : false;
-      setIsMobile(mobile);
-    };
-  }, []);
-
-  if (isMobile && !torrentSelected) {
+  render() {
+    const { pending, completed } = this.props;
     return (
-      <div className="dashboard">
-        <section className="left-sidebar">
-          <TorrentList />
+      <div>
+        <section>
+          <AddTorrent />
+        </section>
+        <section>
+          {!!completed.length && (
+            <TorrentList title="Completed Torrents" items={completed} />
+          )}
+          {!!pending.length && (
+            <TorrentList title="Pending Torrents" items={pending} />
+          )}
         </section>
       </div>
     );
   }
+}
 
-  if (isMobile && torrentSelected) {
-    return (
-      <div className="dashboard">
-        <section className="content">
-          <TorrentHeader />
-          <TorrentDetails />
-        </section>
-      </div>
-    );
-  }
-
-  return (
-    <div className="dashboard">
-      <section className="left-sidebar">
-        <TorrentList />
-      </section>
-      <section className="content">
-        <TorrentHeader />
-        <TorrentDetails />
-      </section>
-    </div>
-  );
+const mapStateToProps = (state) => {
+  console.log(state.torrents);
+  const { completed, pending } = state.torrents;
+  return { completed, pending };
 };
 
-export default Dashboard;
+export default connect(mapStateToProps, { getTorrents })(Dashboard);

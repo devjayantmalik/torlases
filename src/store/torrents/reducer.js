@@ -1,13 +1,23 @@
-import { ADD_TORRENT, GET_TORRENTS, DELETE_TORRENT } from "./types";
+import { ADD_TORRENT, GET_TORRENTS } from "./types";
 
-export default (state = [], action) => {
+const INITIAL_STATE = {
+  completed: [],
+  pending: [],
+};
+
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case GET_TORRENTS:
-      return;
+      return {
+        ...state,
+        completed: action.payload.completed || [],
+        pending: action.payload.pending || [],
+      };
     case ADD_TORRENT:
-      return;
-    case DELETE_TORRENT:
-      return;
+      const { torrent, status } = action.payload;
+      return status === "completed"
+        ? { ...state, completed: [...state.completed, torrent] }
+        : { ...state, pending: [...state.pending, torrent] };
     default:
       return state;
   }

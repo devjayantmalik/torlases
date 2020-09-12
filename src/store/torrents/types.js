@@ -1,3 +1,2 @@
 export const GET_TORRENTS = "GET_TORRENTS";
 export const ADD_TORRENT = "ADD_TORRENT";
-export const DELETE_TORRENT = "DELETE_TORRENT";
